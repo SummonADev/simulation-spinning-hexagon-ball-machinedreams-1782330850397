@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install --legacy-peer-deps
 COPY . .
-RUN npm run build
+RUN npx tsc -b --project tsconfig.json && npx vite build
 
 # Stage 2: Serve
 FROM nginx:alpine
